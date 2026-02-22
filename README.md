@@ -28,6 +28,25 @@ All agents are aware of the following MCP servers:
 - **Figma-first UI** — devops-ui-specialist pulls design tokens from Figma before writing any UI code
 - **E2B sandbox** — build-master runs risky or experimental code in E2B cloud sandboxes before local execution
 
+## Diagnostics
+
+`mcp-doctor.sh` checks the full MCP stack and prints a color-coded PASS/FAIL table:
+
+```bash
+bash mcp-doctor.sh
+```
+
+Checks performed:
+- Podman socket active (`systemctl --user`)
+- E2B API key present in `~/.secrets`
+- `npx` available on PATH
+- Podman Docker socket responding (HTTP 200)
+- `e2b-mcp.sh` exists and is executable
+- `figma-mcp` resolves via npx
+- All 4 MCPs declared in Claude Code, OpenCode, and Kilo Code configs
+
+Exits `0` if all pass, `1` if any fail.
+
 ## Installation
 
 Copy the agent `.md` files into `~/.claude/agents/`:
