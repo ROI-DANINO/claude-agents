@@ -147,6 +147,20 @@ check_tool_config "Claude Code config"  "$HOME/.claude/settings.json"
 check_tool_config "OpenCode config"     "$HOME/.config/opencode/opencode.json"
 check_tool_config "Kilo Code config"    "$HOME/.config/kilo/config.json"
 
+check_sync_script() {
+    local label="Sync script (sync-agents.sh)"
+    local script="$HOME/.claude/scripts/sync-agents.sh"
+    if [[ -f "$script" && -x "$script" ]]; then
+        record "$label" "PASS" "$script exists and is executable"
+    elif [[ -f "$script" ]]; then
+        record "$label" "FAIL" "$script exists but is NOT executable (run: chmod +x $script)"
+    else
+        record "$label" "FAIL" "$script not found"
+    fi
+}
+
+check_sync_script
+
 max_len=0
 for label in "${LABELS[@]}"; do
     (( ${#label} > max_len )) && max_len=${#label}
