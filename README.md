@@ -59,6 +59,16 @@ Checks performed:
 
 Exits `0` if all pass, `1` if any fail.
 
+## Syncing Changes
+
+After editing agent prompts in `~/.claude/agents/` or `CLAUDE.md`, run:
+
+```bash
+~/.claude/scripts/sync-agents.sh
+```
+
+This copies all agent files and `CLAUDE.md` into the repo, commits, and pushes. No-ops if nothing changed.
+
 ## Installation
 
 Copy the agent `.md` files into `~/.claude/agents/`:
