@@ -28,6 +28,18 @@ All agents are aware of the following MCP servers:
 - **Figma-first UI** — devops-ui-specialist pulls design tokens from Figma before writing any UI code
 - **E2B sandbox** — build-master runs risky or experimental code in E2B cloud sandboxes before local execution
 
+## Inter-Agent Memory
+
+Agents share state via `~/Desktop/Projects/.claude/session_state.json`. Each agent reads it at task start and writes key decisions at task end (ports used, new dependencies, architectural changes).
+
+`session_state.template.json` in this repo shows the expected schema. To initialize on a new machine:
+
+```bash
+cp session_state.template.json ~/Desktop/Projects/.claude/session_state.json
+```
+
+The live `session_state.json` is gitignored — it's machine-specific runtime data.
+
 ## Diagnostics
 
 `mcp-doctor.sh` checks the full MCP stack and prints a color-coded PASS/FAIL table:

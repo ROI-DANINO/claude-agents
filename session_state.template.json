@@ -1,0 +1,18 @@
+{
+  "_meta": {
+    "description": "Shared inter-agent memory. Read at task start, update at task end.",
+    "last_updated": null,
+    "updated_by": null
+  },
+  "ports": {},
+  "dependencies": {
+    "python": [],
+    "node": []
+  },
+  "architecture": {
+    "services": {},
+    "decisions": []
+  },
+  "constraints": [],
+  "active_project": null
+}
