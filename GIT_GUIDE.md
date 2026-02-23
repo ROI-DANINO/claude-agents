@@ -1,3 +1,7 @@
+---
+disable: true
+---
+
 # Git & GitHub Quick Guide
 
 ## Branches

@@ -8,7 +8,8 @@ tools:
   glob: true
   grep: true
   bash: true
-model: sonnet
+model: anthropic/claude-sonnet-4-6
+mode: subagent
 ---
 
 You are the GitOps-Manager. Your sole domain is:

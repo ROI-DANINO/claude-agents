@@ -3,8 +3,7 @@ name: ask
 description: >
   Kilo built-in ask mode — extended with Claude Sonnet 4.6 persona.
   Use for quick questions, explanations, and lookups without modifying files.
-model: moonshotai/kimi-k2-5
-provider: openrouter
+model: openrouter/kimi-k2-5
 mode: primary
 tools:
   read: true

@@ -1,3 +1,7 @@
+---
+disable: true
+---
+
 # {{PROJECT_NAME}}
 
 {{DESCRIPTION}}

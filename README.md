@@ -1,3 +1,7 @@
+---
+disable: true
+---
+
 # Claude Agents
 
 Three specialized subagents for Claude Code. A primary Claude Code session acts as orchestrator — it delegates work to these agents, integrates results, and communicates with the user.
