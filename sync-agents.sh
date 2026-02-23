@@ -1,30 +1,41 @@
 #!/usr/bin/env bash
-# sync-agents.sh — Copy updated agent prompts and CLAUDE.md to the agents repo and push.
+# sync-agents.sh — Deploy agent files from this repo to live locations.
 
 set -euo pipefail
 
-AGENTS_SRC="$HOME/.claude/agents"
-CLAUDE_MD="$HOME/Desktop/Projects/CLAUDE.md"
-AGENTS_REPO="$HOME/Desktop/Projects/agents"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-echo "Syncing agent files to $AGENTS_REPO..."
+AGENTS_DEST="$HOME/.claude/agents"
+CLAUDE_MD_DEST="$HOME/Desktop/Projects/CLAUDE.md"
+SCRIPTS_DEST="$HOME/.claude/scripts"
 
-cp "$AGENTS_SRC/build-master.md"          "$AGENTS_REPO/build-master.md"
-cp "$AGENTS_SRC/devops-ui-specialist.md"  "$AGENTS_REPO/devops-ui-specialist.md"
-cp "$AGENTS_SRC/scribe-sys-architect.md"  "$AGENTS_REPO/scribe-sys-architect.md"
-cp "$CLAUDE_MD"                            "$AGENTS_REPO/CLAUDE.md"
-cp "$HOME/.claude/scripts/mcp-doctor.sh"  "$AGENTS_REPO/mcp-doctor.sh"
-cp "$HOME/.claude/scripts/sync-agents.sh" "$AGENTS_REPO/sync-agents.sh"
+echo "Deploying agent files from $SCRIPT_DIR..."
 
-cd "$AGENTS_REPO"
+mkdir -p "$AGENTS_DEST"
+mkdir -p "$SCRIPTS_DEST"
+
+cp "$SCRIPT_DIR/build-master.md"          "$AGENTS_DEST/build-master.md"          && echo "  ✓ build-master.md → $AGENTS_DEST/"
+cp "$SCRIPT_DIR/devops-ui-specialist.md"  "$AGENTS_DEST/devops-ui-specialist.md"  && echo "  ✓ devops-ui-specialist.md → $AGENTS_DEST/"
+cp "$SCRIPT_DIR/scribe-sys-architect.md"  "$AGENTS_DEST/scribe-sys-architect.md"  && echo "  ✓ scribe-sys-architect.md → $AGENTS_DEST/"
+cp "$SCRIPT_DIR/gitops-manager.md"        "$AGENTS_DEST/gitops-manager.md"        && echo "  ✓ gitops-manager.md → $AGENTS_DEST/"
+cp "$SCRIPT_DIR/CLAUDE.md"                "$CLAUDE_MD_DEST"                       && echo "  ✓ CLAUDE.md → $CLAUDE_MD_DEST"
+cp "$SCRIPT_DIR/mcp-doctor.sh"            "$SCRIPTS_DEST/mcp-doctor.sh"           && echo "  ✓ mcp-doctor.sh → $SCRIPTS_DEST/"
+cp "$SCRIPT_DIR/sync-agents.sh"           "$SCRIPTS_DEST/sync-agents.sh"          && echo "  ✓ sync-agents.sh → $SCRIPTS_DEST/"
+
+cp -r "$SCRIPT_DIR/scaffolds"             "$AGENTS_DEST/scaffolds"                && echo "  ✓ scaffolds/ → $AGENTS_DEST/scaffolds/"
+
+chmod +x "$SCRIPTS_DEST/mcp-doctor.sh"
+chmod +x "$SCRIPTS_DEST/sync-agents.sh"
+
+cd "$SCRIPT_DIR"
 
 if git diff --quiet && git diff --cached --quiet; then
-    echo "Nothing changed — repo is already up to date."
+    echo "Repo has no changes to commit."
     exit 0
 fi
 
-git add build-master.md devops-ui-specialist.md scribe-sys-architect.md CLAUDE.md mcp-doctor.sh sync-agents.sh
-git commit -m "chore: sync agent prompts and CLAUDE.md
+git add build-master.md devops-ui-specialist.md scribe-sys-architect.md gitops-manager.md CLAUDE.md mcp-doctor.sh sync-agents.sh scaffolds/
+git commit -m "chore: update agent prompts and CLAUDE.md
 
 Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>"
 git push
