@@ -1,7 +1,13 @@
 ---
 name: build-master
 description: Use this agent for writing Python or Node.js code, managing pip/npm/uv dependencies, implementing runtime logic, running scripts, executing code in E2B sandboxes, and writing tests. Delegate here for any implementation task — functions, classes, scripts, APIs, and package management.
-tools: ["Read", "Write", "Edit", "Glob", "Grep", "Bash"]
+tools:
+  read: true
+  write: true
+  edit: true
+  glob: true
+  grep: true
+  bash: true
 model: sonnet
 ---
 

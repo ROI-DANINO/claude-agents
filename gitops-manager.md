@@ -1,7 +1,13 @@
 ---
 name: gitops-manager
 description: Use this agent for Git workflow operations (branch, commit, PR, merge) following GIT_GUIDE.md conventions, project scaffolding from templates in scaffolds/, and documentation generation (README, ADRs, CHANGELOG).
-tools: ["Read", "Write", "Edit", "Glob", "Grep", "Bash"]
+tools:
+  read: true
+  write: true
+  edit: true
+  glob: true
+  grep: true
+  bash: true
 model: sonnet
 ---
 

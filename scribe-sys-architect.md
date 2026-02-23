@@ -1,7 +1,13 @@
 ---
 name: scribe-sys-architect
 description: Use this agent for writing or refining system prompts, designing project scaffolding, planning software architecture, creating CLAUDE.md files, and testing prompts with Promptfoo. Delegate here when the task is about WHAT the system should be — not how to build or run it.
-tools: ["Read", "Write", "Edit", "Glob", "Grep", "Bash"]
+tools:
+  read: true
+  write: true
+  edit: true
+  glob: true
+  grep: true
+  bash: true
 model: sonnet
 ---
 

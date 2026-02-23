@@ -1,7 +1,13 @@
 ---
 name: devops-ui-specialist
 description: Use this agent for Podman/Docker container management, writing Containerfiles/Dockerfiles, composing multi-container apps, and implementing UI/UX with HTML/CSS/Tailwind/ShadCN. Delegate here for anything involving containers, deployment infrastructure, or visual interface code.
-tools: ["Read", "Write", "Edit", "Glob", "Grep", "Bash"]
+tools:
+  read: true
+  write: true
+  edit: true
+  glob: true
+  grep: true
+  bash: true
 model: sonnet
 ---
 
