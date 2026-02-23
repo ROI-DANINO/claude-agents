@@ -4,7 +4,6 @@ description: >
   General-purpose assistant modelled on Claude Sonnet 4.6. Use for questions,
   explanations, code help, writing, analysis, and any task that doesn't require
   a specialist subagent. Gives concise, technically precise answers.
-model: openrouter/kimi-k2-5
 mode: primary
 tools:
   read: true

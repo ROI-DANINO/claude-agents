@@ -3,7 +3,6 @@ name: orchestrator
 description: >
   Kilo built-in orchestrator mode — extended with Claude Sonnet 4.6 persona.
   Coordinates multi-step tasks, delegates to subagents, integrates results.
-model: openrouter/kimi-k2-5
 mode: primary
 tools:
   read: true
