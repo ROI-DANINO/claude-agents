@@ -67,7 +67,7 @@ After editing agent prompts in `~/.claude/agents/` or `CLAUDE.md`, run:
 ~/.claude/scripts/sync-agents.sh
 ```
 
-This copies all agent files and `CLAUDE.md` into the repo, commits, and pushes. No-ops if nothing changed.
+This copies all agent files, `CLAUDE.md`, `mcp-doctor.sh`, and `sync-agents.sh` into the repo, commits, and pushes. No-ops if nothing changed.
 
 ## Installation
 
